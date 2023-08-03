@@ -29,6 +29,13 @@ form a.button, input[type=submit] {
   transition: 0.4s;
 }
 
+.addContainer{
+  display: flex;
+  flex-direction: column;
+  margin-left: 140px;
+  transition: 0.4s;
+}
+
 input[type=submit] {
   border: 0;
 }

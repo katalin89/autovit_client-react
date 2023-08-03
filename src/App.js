@@ -8,6 +8,7 @@ import Exercitiu from './ciorna/Exercitiu';
 
 import Kati from './ciorna/Kati';
 
+import Add from './components/add/Add';
 
 
 import Home from './components/home/Home';
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <>
-    <Home/>
+    <Add/>
     
     </>
   );
