@@ -24,9 +24,10 @@ a.button, input[type=submit] {
   cursor: pointer;
 }
 
-form a.button, input[type=submit] {
-  margin-left: 140px;
+.form-container a.button, input[type=submit] {
+  margin-left: 200pxpx;
   transition: 0.4s;
+
 }
 
 .addContainer{

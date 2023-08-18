@@ -12,6 +12,7 @@ import Add from './components/add/Add';
 
 
 import Home from './components/home/Home';
+import BasicExample from './components/exemplu/Exemplu';
 
 
 function App() {
@@ -26,9 +27,7 @@ function App() {
   return (
     <>
     <Add/>
-    
     </>
   );
 }
-
 export default App;

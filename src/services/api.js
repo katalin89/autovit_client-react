@@ -118,8 +118,6 @@ async function sortByPret(){
      data=await  data.json();
 
      return data;
-
-
 }
 
 

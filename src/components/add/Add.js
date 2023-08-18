@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import Car from "../home/Car";
 import { addCar } from "../../services/api";
+import { Alert } from "react-bootstrap"
+
 
 function Add() {
   const [marca, setMarca] = useState("");
@@ -15,13 +17,17 @@ function Add() {
   const [culoare, setCuloare] = useState("");
 
   let [erors, setErrors] = useState("");
+  let [added, setAdded] = useState(false);
 
   function checkErors() {
     let aux = [];
 
     if (marca === "") {
       aux.push("You must complete marca");
+      aux.style.border="red";
     }
+
+   
     if (model === "") {
       aux.push("You must complete model");
     }
@@ -42,11 +48,12 @@ function Add() {
   function handleAddCar() {
 
     checkErors();
-    if(!erors.length>0){
+    if(erors.length==0){
         let car = { marca, model, nrDeLocuri, pret, culoare };
         console.log(car);
         addCar(car);
 
+        setAdded(true);
     }
    
   }
@@ -57,58 +64,36 @@ function Add() {
       <div className="errrs">
 
         {
-            erors.length > 0 ? erors.map((e) => <p>{e}</p>) : null
+            erors.length > 0 ? erors.map((e) => <p className="error">{e}</p>) : null
         }
 
       </div>
+      
 
-      <div className="addContainer">
-        <label>
-          Enter Marca:
-          <input
-            type="text"
-            name="marca"
-            onChange={(event) => {
-              setMarca(event.target.value);
-            }}
-          />
-        </label>
+      <div>
+       
+        {
+          added&&(
+            <Alert variant="success" dismissible onClose={() => setAdded(false)}>
+          <Alert.Heading>Succes!</Alert.Heading>
+          <p>
+          You succesfully added new car
+          </p>
+          
+        </Alert>
+          )
+        }
+      </div>
 
-        <label>
-          Enter Model:
-          <input
-            type="text"
-            name="model"
-            onChange={(event) => {
-              setModel(event.target.value);
-            }}
-          />
-        </label>
+     
 
-        <label>
-          Enter NrDeLocuri:
-          <input
-            type="text"
-            name="nrDeLocuri"
-            onChange={(event) => {
-              setNrDeLocuri(event.target.value);
-            }}
-          />
-        </label>
 
-        <label>
-          Enter Pret:
-          <input
-            type="text"
-            name="pret"
-            onChange={(event) => {
-              setPret(event.target.value);
-            }}
-          />
-        </label>
 
-        <label>
-          Enter Culoare:
+     
+      <h1>New Car</h1>
+      <div className="form-container">
+        <p>
+        <label for="culoare">Culoare</label>
           <input
             type="text"
             name="culoare"
@@ -116,9 +101,58 @@ function Add() {
               setCuloare(event.target.value);
             }}
           />
-        </label>
+        </p>
 
-        <button onClick={handleAddCar}>Add</button>
+        <p>
+          <label for="marca">Marca</label>
+          <input
+            type="text"
+            name="marca"
+            onChange={(event) => {
+              setMarca(event.target.value);
+            }}
+          />
+        </p>
+
+        <p>
+          <label for ="model">Model</label>
+          <input
+            type="text"
+            name="model"
+            onChange={(event) => {
+              setModel(event.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <label for="nrDeLocuri">nrDeLocuri</label>
+          <input
+            type="text"
+            name="nrDeLocuri"
+            onChange={(event) => {
+              setNrDeLocuri(event.target.value);
+            }}
+          />
+        </p>
+
+        <p>
+           <label for="pret">Pret</label>
+          <input
+            type="text"
+            name="pret"
+            onChange={(event) => {
+              setPret(event.target.value);
+            }}
+          />
+        </p>
+       
+        <p>
+        <button onClick={handleAddCar}>Create New Car</button>
+        </p>
+        <p>
+          <button >Cancel</button>
+        </p>
+        
       </div>
     </>
   );

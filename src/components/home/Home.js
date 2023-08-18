@@ -37,7 +37,8 @@ function Home() {
         </thead>
         <tbody>
             
-        {cars.length > 0 ? cars.map((e) => <Car car={e} />) : null}
+        {cars.length > 0 &&( cars.map((e) => <Car car={e} />))}
+        
         </tbody>
       </table>
     </div>
